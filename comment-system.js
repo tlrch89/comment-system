@@ -32,8 +32,10 @@ function submitComment() {
 
 function likeComment(id) {
   const comment = comments.find(c => c.id === id);
-  comment.likes += 1;
-  renderComments();
+  if (comment) {
+    comment.likes += 1;
+    renderComments();
+  }
 }
 
 function deleteComment(id) {
