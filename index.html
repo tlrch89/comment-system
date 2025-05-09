@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>Comment System</title>
+  <style>
+    body { font-family: sans-serif; background: #f9f9f9; padding: 20px; }
+    #comment-system-root { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    .comment { margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 8px; }
+    .like-btn { color: #888; cursor: pointer; margin-left: 8px; }
+  </style>
+</head>
+<body>
+  <div id="comment-system-root">
+    <h2>📝 댓글</h2>
+    <textarea id="comment-input" placeholder="댓글을 입력하세요" rows="3" style="width:100%;"></textarea><br/>
+    <input id="comment-password" type="password" placeholder="비밀번호" style="width:100%; margin-top:4px;"><br/>
+    <button id="submitBtn" style="margin-top:6px;">댓글 작성</button>
+    <div id="comment-list"></div>
+  </div>
+
+  <script src="comment-system.js"></script>
+  <script>
+    document.getElementById('submitBtn').addEventListener('click', submitComment);
+  </script>
+</body>
+</html>
