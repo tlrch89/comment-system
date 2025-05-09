@@ -2,8 +2,10 @@ const socket = new WebSocket('wss://comment-ws.onrender.com');
 let comments = [];
 
 socket.onmessage = async (event) => {
-  const raw = await event.data.text();  // Blob → 텍스트로 변환
-  const msg = JSON.parse(raw);          // 텍스트 → JSON
+  const reader = event.data;
+  const raw = typeof reader === 'string' ? reader : await reader.text();
+  const msg = JSON.parse(raw);
+  
   if (msg.type === 'new_comment') {
     comments.push(msg.data);
     renderComments();
@@ -12,6 +14,7 @@ socket.onmessage = async (event) => {
     renderComments();
   }
 };
+
 
 function submitComment() {
   const text = document.getElementById('comment-input').value.trim();
